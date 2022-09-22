@@ -33,3 +33,25 @@ void setup()
   myservo_4.attach(Servo4);
 
 }
+
+
+void loop() 
+{
+  
+  Servo_val = map(analogRead(poten1),0, 1023, 0, 179);
+  myservo_1.write(Servo_val);
+  Servo_va2 = map(analogRead(poten2),0, 1023, 0, 179);
+  myservo_2.write(Servo_va2);
+  Servo_va3 = map(analogRead(poten3),0, 1023, 0, 179);
+  myservo_3.write(Servo_va3);
+  Servo_va4 = map(analogRead(poten4),0, 1023, 0, 179);
+  myservo_4.write(Servo_va4);
+  
+  Serial.println("SERVO 1 Location :",Servo_val);
+  Serial.println("SERVO 2 Location :",Servo_va2);
+  Serial.println("SERVO 3 Location :",Servo_va3);
+  Serial.println("SERVO 4 Location :",Servo_va4);
+  
+  delay(500);
+  
+}
