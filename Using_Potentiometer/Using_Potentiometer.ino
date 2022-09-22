@@ -22,3 +22,14 @@ int Servo_va2;
 int Servo_va3;
 int Servo_va4;
 
+
+void setup() 
+{
+  
+  Serial.begin(9600);
+  myservo_1.attach(Servo1);
+  myservo_2.attach(Servo2);
+  myservo_3.attach(Servo3);
+  myservo_4.attach(Servo4);
+
+}
