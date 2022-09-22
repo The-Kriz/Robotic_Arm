@@ -47,10 +47,10 @@ void loop()
   Servo_va4 = map(analogRead(poten4),0, 1023, 0, 179);
   myservo_4.write(Servo_va4);
   
-  Serial.println("SERVO 1 Location :",Servo_val);
-  Serial.println("SERVO 2 Location :",Servo_va2);
-  Serial.println("SERVO 3 Location :",Servo_va3);
-  Serial.println("SERVO 4 Location :",Servo_va4);
+  Serial.println("SERVO 1 Location :"+String(Servo_val));
+  Serial.println("SERVO 2 Location :"+String(Servo_va2));
+  Serial.println("SERVO 3 Location :"+String(Servo_va3));
+  Serial.println("SERVO 4 Location :"+String(Servo_va4));
   
   delay(500);
   
