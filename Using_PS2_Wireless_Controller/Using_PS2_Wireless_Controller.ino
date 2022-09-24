@@ -30,6 +30,7 @@ int Servo_val2 = 90 ;
 int Servo_val3 = 90 ;
 int Servo_val4 = 90 ;
 
+
 void setup() 
 {
   
@@ -66,4 +67,93 @@ void setup()
           Serial.println("GuitarHero Controller Found");
         break;
       }
+}
+
+
+void loop() 
+{
+  
+  int lJoyY = ps2x.Analog(PSS_LY);
+  int lJoyX = ps2x.Analog(PSS_LX);
+  int rJoyY = ps2x.Analog(PSS_RY);
+  int rJoyX = ps2x.Analog(PSS_RX);
+  
+  //left joystick
+  
+  if (ps2x.Button(PSB_L1))
+  {
+    if ( lJoyX > 50 )
+    { 
+      Servo_val1 += 1;
+      myservo_1.write(Servo_val1);
+    }
+    if ( lJoyX < -50 )
+    { 
+      Servo_val1 -= 1;
+      myservo_1.write(Servo_val1);
+    }
+  }
+
+  if (ps2x.Button(PSB_L2))
+  {
+    if ( lJoyX > 50 )
+    { 
+      Servo_val2 += 1;
+      myservo_2.write(Servo_val2);
+    }
+    if ( lJoyX < -50 )
+    { 
+      Servo_val2 -= 1;
+      myservo_2.write(Servo_val2);
+    }
+  }
+  
+  //right joystick
+  
+  if (ps2x.Button(PSB_R1))
+  {
+    if ( rJoyX > 50 )
+    { 
+      Servo_val3 += 1;
+      myservo_3.write(Servo_val3);
+    }
+    if ( rJoyX < -50 )
+    { 
+      Servo_val3 -= 1;
+      myservo_3.write(Servo_val3);
+    }
+  }
+  
+  if (ps2x.Button(PSB_R2)) // RESET TO 90*
+  {
+    if ( rJoyX > 50 )
+    { 
+      myservo_4.write(Servo_val4);
+    }
+    if ( rJoyX < -50 )
+    { 
+      Servo_val4 -= 1;
+      myservo_4.write(Servo_val4);
+    }
+  }
+
+  if (ps2x.Button(PSB_CROSS))
+  {
+    Servo_val1 = 90 ; 
+    Servo_val2 = 90 ;
+    Servo_val3 = 90 ;
+    Servo_val4 = 90 ;
+    myservo_1.write(Servo_val1);
+    myservo_2.write(Servo_val2);
+    myservo_3.write(Servo_val3);
+    myservo_4.write(Servo_val4);
+   }
+    
+  Serial.println("SERVO 1 Location :"+String(Servo_val1));
+  Serial.println("SERVO 2 Location :"+String(Servo_val2));
+  Serial.println("SERVO 3 Location :"+String(Servo_val3));
+  Serial.println("SERVO 4 Location :"+String(Servo_val4));
+  
+  delay(500);
+  
 }
