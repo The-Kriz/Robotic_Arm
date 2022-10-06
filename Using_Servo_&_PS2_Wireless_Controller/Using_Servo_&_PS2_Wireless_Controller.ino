@@ -30,6 +30,10 @@ int Servo_val2 = 90 ;
 int Servo_val3 = 90 ;
 int Servo_val4 = 90 ;
 
+int pss_val_high_high = 255;
+int pss_val_high_low = 170;
+int pss_val_low_high = 85;
+int pss_val_low_low = 0;
 
 void setup() 
 {
@@ -82,12 +86,12 @@ void loop()
   
   if (ps2x.Button(PSB_L1))
   {
-    if ( lJoyX > 50 )
+    if ( lJoyX >=pss_val_high_low && lJoyX <= pss_val_high_high )
     { 
       Servo_val1 += 1;
       myservo_1.write(Servo_val1);
     }
-    if ( lJoyX < -50 )
+    if ( lJoyX >= pss_val_low_low && lJoyX <= pss_val_low_high )
     { 
       Servo_val1 -= 1;
       myservo_1.write(Servo_val1);
@@ -96,12 +100,12 @@ void loop()
 
   if (ps2x.Button(PSB_L2))
   {
-    if ( lJoyX > 50 )
+    if ( lJoyX >=pss_val_high_low && lJoyX <= pss_val_high_high )
     { 
       Servo_val2 += 1;
       myservo_2.write(Servo_val2);
     }
-    if ( lJoyX < -50 )
+    if ( lJoyX >= pss_val_low_low && lJoyX <= pss_val_low_high )
     { 
       Servo_val2 -= 1;
       myservo_2.write(Servo_val2);
@@ -112,12 +116,12 @@ void loop()
   
   if (ps2x.Button(PSB_R1))
   {
-    if ( rJoyX > 50 )
+    if ( lJoyX >=pss_val_high_low && lJoyX <= pss_val_high_high )
     { 
       Servo_val3 += 1;
       myservo_3.write(Servo_val3);
     }
-    if ( rJoyX < -50 )
+    if ( lJoyX >= pss_val_low_low && lJoyX <= pss_val_low_high )
     { 
       Servo_val3 -= 1;
       myservo_3.write(Servo_val3);
@@ -126,11 +130,11 @@ void loop()
   
   if (ps2x.Button(PSB_R2)) // RESET TO 90*
   {
-    if ( rJoyX > 50 )
+    if ( lJoyX >=pss_val_high_low && lJoyX <= pss_val_high_high )
     { 
       myservo_4.write(Servo_val4);
     }
-    if ( rJoyX < -50 )
+    if ( lJoyX >= pss_val_low_low && lJoyX <= pss_val_low_high )
     { 
       Servo_val4 -= 1;
       myservo_4.write(Servo_val4);
