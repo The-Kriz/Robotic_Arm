@@ -41,6 +41,10 @@ int Stepper_speed2 = 10;
 int Stepper_speed3 = 10;
 int Stepper_speed4 = 10;
 
+int pss_val_high_high = 255;
+int pss_val_high_low = 170;
+int pss_val_low_high = 85;
+int pss_val_low_low = 0;
 
 //PS2 pins
 PS2X ps2x; 
@@ -111,12 +115,12 @@ void loop()
   
   if (ps2x.Button(PSB_L1))
   {
-    if ( lJoyX > 50 )
+    if ( lJoyX >=pss_val_high_low && lJoyX <= pss_val_high_high )
     { 
       Stepper_val1 += 1;
       mystepper_1.step(Stepper_val1);
     }
-    if ( lJoyX < -50 )
+    if ( lJoyX >= pss_val_low_low && lJoyX <= pss_val_low_high )
     { 
       Stepper_val1 -= 1;
       mystepper_1.step(Stepper_val1);
@@ -125,12 +129,12 @@ void loop()
 
   if (ps2x.Button(PSB_L2))
   {
-    if ( lJoyX > 50 )
+    if ( lJoyX >=pss_val_high_low && lJoyX <= pss_val_high_high )
     { 
       Stepper_val2 += 1;
       mystepper_2.step(Stepper_val2);
     }
-    if ( lJoyX < -50 )
+    if ( lJoyX >= pss_val_low_low && lJoyX <= pss_val_low_high )
     { 
       Stepper_val2 -= 1;
       mystepper_2.step(Stepper_val2);
@@ -141,12 +145,12 @@ void loop()
   
   if (ps2x.Button(PSB_R1))
   {
-    if ( rJoyX > 50 )
+    if ( lJoyX >=pss_val_high_low && lJoyX <= pss_val_high_high )
     { 
       Stepper_val3 += 1;
       mystepper_3.step(Stepper_val3);
     }
-    if ( rJoyX < -50 )
+    if ( lJoyX >= pss_val_low_low && lJoyX <= pss_val_low_high )
     { 
       Stepper_val3 -= 1;
       mystepper_3.step(Stepper_val3);
@@ -155,11 +159,11 @@ void loop()
   
   if (ps2x.Button(PSB_R2)) 
   {
-    if ( rJoyX > 50 )
+    if ( lJoyX >=pss_val_high_low && lJoyX <= pss_val_high_high )
     {
       mystepper_4.step(Stepper_val4);
     }
-    if ( rJoyX < -50 )
+    if ( lJoyX >= pss_val_low_low && lJoyX <= pss_val_low_high )
     { 
       Stepper_val4 -= 1;
       mystepper_4.step(Stepper_val4);
