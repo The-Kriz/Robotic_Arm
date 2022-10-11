@@ -95,3 +95,27 @@ if (unit != 0 && val != 0)
       Serial.println("Enter a position value between 0 and 180");
       }
   }
+  else if( (unit) == 4)
+  {
+    Serial.println("unit 4 if");
+      if(val >= 1 && val <= 179)
+      { 
+      myservo_4.write(val);
+      Serial.println("SERVO 4 Location :"+String(val));
+      }
+      else
+      {
+      Serial.println("Enter a position value between 0 and 180");
+      }
+  }
+  else
+  {
+    Serial.println("SERVO '"+String(unit)+"' Not Found");
+  }
+  val = 0;
+  Serial.println("Val :"+String(val));
+  unit = 0;
+  Serial.println("Unit :"+String(unit));
+}}
+  delay(500);
+  }
