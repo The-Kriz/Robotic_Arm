@@ -23,8 +23,6 @@ int Servo_va3;
 int Servo_va4;
 
 int val = 0;
-int count = 0;
-int data =0;
 int unit =0;
 
 void setup() 
@@ -42,10 +40,10 @@ void setup()
 void loop() 
 {
 if (Serial.available() > 0) {
-    // read the incoming byte:
+    // read the incoming data:
     int  val = Serial.parseInt();
 
-    // say what you got:
+    // Print and process the data for next step:
     Serial.print("received input: ");
     Serial.println(val);
     unit = val%10;
@@ -53,10 +51,9 @@ if (Serial.available() > 0) {
     Serial.println(unit);
     Serial.println(val);
     
-if (unit != 0 && val != 0)
+if (unit != 0 && val != 0) //Enter only if any data received
 {
-  Serial.println("first if");
-  if( unit == 1)
+  if( unit == 1) //Enter if data received is for Servo 1
   {
       Serial.println("unit 1 if");
       if(val >= 1 && val <= 179)
@@ -69,7 +66,7 @@ if (unit != 0 && val != 0)
       Serial.println("Enter a position value between 0 and 180");
       }
   }
-  else if( unit == 2)
+  else if( unit == 2) //Enter if data received is for Servo 2
   {
     Serial.println("unit 2 if");
       if(val >= 1 && val <= 179)
@@ -82,7 +79,7 @@ if (unit != 0 && val != 0)
       Serial.println("Enter a position value between 0 and 180");
       }
   }
-  else if( unit == 3)
+  else if( unit == 3) //Enter if data received is for Servo 3
   {
     Serial.println("unit 3 if");
       if(val >= 1 && val <= 179)
@@ -95,7 +92,7 @@ if (unit != 0 && val != 0)
       Serial.println("Enter a position value between 0 and 180");
       }
   }
-  else if( (unit) == 4)
+  else if( (unit) == 4) //Enter if data received is for Servo 4
   {
     Serial.println("unit 4 if");
       if(val >= 1 && val <= 179)
@@ -108,7 +105,7 @@ if (unit != 0 && val != 0)
       Serial.println("Enter a position value between 0 and 180");
       }
   }
-  else
+  else //Enter if any data received is not addressed to any of the servo defined 
   {
     Serial.println("SERVO '"+String(unit)+"' Not Found");
   }
